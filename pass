@@ -1,0 +1,24 @@
+#!/bin/sh
+#
+# Invoke password-store
+#
+
+#
+# Enable extensions.
+#
+export PASSWORD_STORE_ENABLE_EXTENSIONS=true
+
+#
+# Find our location.
+#
+SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
+
+#
+# Configure the extensions-path
+#
+export PASSWORD_STORE_EXTENSIONS_DIR=${SCRIPTPATH}/extensions/
+
+#
+# Execute the "real" binary
+#
+exec ${SCRIPTPATH}/bin/password-store.sh $*
