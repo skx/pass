@@ -20,7 +20,8 @@
 
 # 0.1.0 - initial release
 # 0.2.0 - added support for --exec
-VERSION="0.2.0"
+# 0.3.0 - "pass env version" works now
+VERSION="0.3.0"
 
 cmd_env_usage() {
   cat <<-_EOF
@@ -106,7 +107,8 @@ cmd_env_set() {
 }
 
 case "$1" in
-  help|--help|-h) shift; cmd_env_usage "$@" ;;
-  *)                     cmd_env_set "$@" ;;
+    help|--help|-h)    shift; cmd_env_usage "$@" ;;
+    version|--version) shift; cmd_env_version "$@" ;;
+    *)                        cmd_env_set "$@" ;;
 esac
 exit 0

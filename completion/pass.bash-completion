@@ -98,11 +98,11 @@ _pass()
 				_pass_complete_entries
 				;;
 			env|-*)
-				COMPREPLY+=($(compgen -W "--exec" -- ${cur}))
+				COMPREPLY+=($(compgen -W "--exec --version" -- ${cur}))
 				_pass_complete_entries 1
 				;;
 			otp|show|-*)
-				COMPREPLY+=($(compgen -W "-c --clip" -- ${cur}))
+				COMPREPLY+=($(compgen -W "-c --clip --version" -- ${cur}))
 				_pass_complete_entries 1
 				;;
 			insert)
