@@ -87,8 +87,21 @@ cmd_env_set() {
           # Make it upper-case
           key=$(echo $line | awk -F: '{print $1}' | tr a-z A-Z)
 
-          # Second fields.  Remove leading/trailing whitespace
-          pwd=$(echo $line | awk -F: '{$1=""; print $0}' | tr -d \ )
+          # Now ordinarily we could get the second-field by using
+          # a similar approach:
+          #
+          #   awk -F: '{print $2}'
+          #
+          # However if the password/field contains colons then this
+          # breaks.  For example:
+          #
+          #   Link: s3:https://example.com/#!hello
+          #
+          # Get the position of the (first) colon
+          pos=$(expr index "$line" ":")
+
+          # Now the second field is anything after that.
+          pwd=$(echo ${line:$pos} | tr -d \ )
 
           # Empty execute?  Just echo, we assume we're being sourced.
           if [ -z "${exec}" ]; then
