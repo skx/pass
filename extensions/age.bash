@@ -26,5 +26,5 @@ cd $PREFIX
     done
 
     # This will now be sorted and shown
-) | sort | awk '{for (i=2; i<NF; i++) printf $i " "; print $NF}'
+) | sort | sed 's/\.gpg$//' | awk '{for (i=2; i<NF; i++) printf $i " "; print $NF}'
 
