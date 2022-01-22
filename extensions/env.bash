@@ -85,7 +85,7 @@ cmd_env_set() {
 
           # Key is the first field, before the ":"
           # Make it upper-case
-          key=$(echo $line | awk -F: '{print $1}' | tr a-z A-Z)
+          key=$(echo $line | awk -F: '{print $1}' | tr "[:lower:]" "[:upper:]" )
 
           # Now ordinarily we could get the second-field by using
           # a similar approach:
