@@ -97,11 +97,10 @@ cmd_env_set() {
           #
           #   Link: s3:https://example.com/#!hello
           #
-          # Get the position of the (first) colon
-          pos=$(expr index "$line" ":")
 
-          # Now the second field is anything after that.
-          pwd=$(echo ${line:$pos} | tr -d \ )
+          # Get the second field by deleting everything upto (inclusive) ': '
+          pwd=${line#*: }
+          # NB: this method allows spaces in the Notes field.
 
           # Empty execute?  Just echo, we assume we're being sourced.
           if [ -z "${exec}" ]; then
