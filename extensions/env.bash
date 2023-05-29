@@ -107,7 +107,7 @@ cmd_env_set() {
               echo "export ${key}=\"${pwd}\""
           else
               # Exec is set, so export the value directly
-              export ${key}=${pwd}
+              export ${key}="${pwd}"
           fi
       fi
   done <<< "$contents"
