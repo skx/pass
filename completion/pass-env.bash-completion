@@ -1,0 +1,6 @@
+# completion file for bash for the 'env' extension to password-store
+
+__password_store_extension_complete_env() {
+    COMPREPLY+=($(compgen -W "--exec --version" -- ${cur}))
+    _pass_complete_entries 1
+}
